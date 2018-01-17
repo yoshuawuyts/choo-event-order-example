@@ -13,6 +13,21 @@ if (process.env.NODE_ENV !== 'production') {
   // app.use(require('choo-service-worker')())
 }
 
+app.use((state, emitter) => {
+  console.log('first store: loaded')
+  emitter.on('DOMContentLoaded', () => {
+    console.log('first store: dom loaded!')
+    emitter.emit('foo')
+  })
+})
+
+app.use((state, emitter) => {
+  console.log('second store: loaded')
+  emitter.on('foo', () => {
+    console.log('second store: foo emitted!')
+  })
+})
+
 app.use(store)
 
 app.route('/', require('./views/main'))
