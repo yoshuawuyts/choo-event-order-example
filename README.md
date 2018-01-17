@@ -1,5 +1,5 @@
 # choo-event-order-example
-A very cute app
+repro for https://github.com/choojs/choo/issues/619
 
 ## Routes
 Route              | File               | Description                     |
